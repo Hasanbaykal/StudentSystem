@@ -53,6 +53,8 @@
                             $HashPass = password_hash($Pass, PASSWORD_DEFAULT);
                             date_default_timezone_set('Europe/Amsterdam');
                             $Date = date("d/m/Y");
+                            $query = " insert into student_data (FName,LName,UName,DOB,Gender,Email,Password,Date) values ('$FirstName','$LastName','$UserName','$DOB','$Gender','$Email',$HashPass,'$Date')";
+                            mysqli_query($db,$query);
                             header("location:register.php?Succes");
                             exit();
                             }

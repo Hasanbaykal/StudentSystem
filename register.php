@@ -1,3 +1,4 @@
+<?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/header.php'); ?>
 
     <div class="container">
@@ -81,3 +82,5 @@
             </div>
         </div>
     </div>
+
+<?php require_once('includes/footer.php'); ?>
