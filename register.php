@@ -1,4 +1,3 @@
-<?php require_once('includes/connection.php'); ?>
 <?php require_once('includes/header.php'); ?>
 
     <div class="container">
@@ -45,7 +44,20 @@
                             echo '<div class="alert alert-danger text-center">'.$Message.'</div>';
                         }
 
-                        if(isset($_GET['Succes']))
+                        if(isset($_GET['Invalid_Format']))
+                        {
+                            $Message = " Invalid Format ";
+                            echo '<div class="alert alert-danger text-center">'.$Message.'</div>';
+                        }
+
+                        if(isset($_GET['Too_Large']))
+                        {
+                            $Message = " Image Size Too Large ";
+                            echo '<div class="alert alert-danger text-center">'.$Message.'</div>';
+                        }
+
+
+                        if(isset($_GET['Success']))
                         {
                             $Message = " Uw account is geregistreerd. ";
                             echo '<div class="alert alert-succes text-center">'.$Message. '
@@ -59,7 +71,7 @@
                     <div class="card-body">
 
                     <form action="registerphp.php" method="POST" enctype="multipart/form-data">
-                        <!--<label class="btn btn-primary">
+                        <label class="btn btn-primary">
                             Upload Foto Studentenpas<input type="file" style="display:none" name="image">
                         </label>-->
                         <input type="text" placeholder="Voornaam" name="FName" class="form-control mb-2">

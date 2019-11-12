@@ -1,16 +1,27 @@
 <?php
+    require_once('includes/connection.php');
     if(isset($_POST['register']))
     {
         
-        $FirstName = mysqli_real_escape_string($db,$_POST["FName"]);
-        $LastName = mysqli_real_escape_string($db,$_POST["LName"]);
-        $UserName = mysqli_real_escape_string($db,$_POST["UName"]);
-        $DOB = mysqli_real_escape_string($db,$_POST["DOB"]);
-        $Gender = mysqli_real_escape_string($db,$_POST["Gender"]);
-        $Email = mysqli_real_escape_string($db,$_POST["Email"]);
-        $Pass = mysqli_real_escape_string($db,$_POST["Password"]);
+        $Image = $_FILES['image']['name'];
+        $Type = $_FILES['image']['type'];
+        $Temp = $_FILES['image']['tmp_name'];
+        $size = $_FILES['image']['size'];
+        
+        $Ext = explode('.',$Image);
+        $TrueExt = (strtolower(end($Ext)));
+        $AllowImg = array('jpg','jpeg','png');
+        $Target = "images/".$Image;
 
-        if(empty($FirstName) || empty($LastName) || empty($UserName) || empty($DOB) || empty($Gender) || empty($Email) || empty($Pass))
+        $FirstName = mysqli_real_escape_string($con,$_POST["FName"]);
+        $LastName = mysqli_real_escape_string($con,$_POST["LName"]);
+        $UserName = mysqli_real_escape_string($con,$_POST["UName"]);
+        $DOB = mysqli_real_escape_string($con,$_POST["DOB"]);
+        $Gender = mysqli_real_escape_string($con,$_POST["Gender"]);
+        $Email = mysqli_real_escape_string($con,$_POST["Email"]);
+        $Pass = mysqli_real_escape_string($con,$_POST["Password"]);
+
+        if(empty($Image) || empty($FirstName) || empty($LastName) || empty($UserName) || empty($DOB) || empty($Gender) || empty($Email) || empty($Pass))
         {
             header("location:register.php?Empty");
             exit();
@@ -32,7 +43,7 @@
                 else 
                 {
                     $query = " select * from student_data where UName='".$UserName."'";
-                    $result = mysqli_query($db,$query);
+                    $result = mysqli_query($con,$query);
 
                     if(mysqli_fetch_assoc($result))
                     {
@@ -42,7 +53,7 @@
                     else 
                     {
                         $query = " select * from student_data where Email='".$Email."'";
-                        $result = mysqli_query($db,$query);
+                        $result = mysqli_query($con,$query);
 
                         if(mysqli_fetch_assoc($result))
                         {
@@ -53,18 +64,44 @@
                             $HashPass = password_hash($Pass, PASSWORD_DEFAULT);
                             date_default_timezone_set('Europe/Amsterdam');
                             $Date = date("d/m/Y");
-                            $query = " insert into student_data (FName,LName,UName,DOB,Gender,Email,Password,Date) values ('$FirstName','$LastName','$UserName','$DOB','$Gender','$Email',$HashPass,'$Date')";
-                            mysqli_query($db,$query);
-                            header("location:register.php?Succes");
-                            exit();
-                            }
-                        }
 
+                            if(in_array($TrueExt,$AllowImg))
+                            {
+
+                                if($size<1000000)
+                                {
+                                    $query = " insert into student_data (image,FName,LName,UName,DOB,Gender,Email,Password,Date) values ('$Image','$FirstName','$LastName','$UserName','$DOB','$Gender','$Email','$HashPass','$Date')";
+                                    mysqli_query($con,$query);
+                                    move_uploaded_file($Temp,$Target);
+                                    header("location:register.php?Success");
+                                    exit();
+
+                                }
+                                else
+                                {
+                                    header("location:register.php?Too_Large");
+                                    exit();
+                                }
+
+                            }
+                            else
+                            {
+                                header("location:register.php?Invalid_Format");
+                                exit();
+                            }
+
+
+                        }
+                        
                     }
                 }
-
             }
+        }
+        
+
     }
-    else {
+    else
+    {
         header("location:register.php");
     }
+?>

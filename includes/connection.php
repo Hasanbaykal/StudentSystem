@@ -1,14 +1,17 @@
 <?php
-$host       = "localhost";
-$database   = "sr_system";
-$user       = "root";
-$password   = "";
-$db = mysqli_connect($host, $user, $password, $database)
-or die("Error: " . mysqli_connect_error());
 
-// $con = mysqli_connect('loaclhost','root','','sr_system');
-// if(!$con)
-// {
-//      echo 'Conncetion Error';
-// }  
+$con = mysqli_connect("localhost","root","","sr_system");
+if(!$con)
+{
+echo 'Connection Error';
+}
+
+//$host       = "localhost";
+//$user       = "root";
+//$password   = "";
+//$database   = "sr_system";
+//$db = mysqli_connect($host, $user, $password, $database)
+//or die("Error: " . mysqli_connect_error());
+
 ?> 
+
