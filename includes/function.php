@@ -79,6 +79,11 @@
                             $Message = " Wachtwoord Klopt Niet ";
                             echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
                         }
+
+                        if(isset($_SESSION['StudentID']))
+                        {
+                        header("location:index.php");
+                        }
     }
 
 
