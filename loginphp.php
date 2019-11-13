@@ -29,7 +29,8 @@
                 elseif($Hash==true)
                 {
                     $_SESSION['StudentID']=$row['ID'];
-                    header("location:view.php");
+                    $StudentID=$row['ID'];
+                    header("location:view.php?success=$StudentID");
                 }
             }
             else
