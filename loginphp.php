@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     require_once('includes/connection.php');
     if(isset($_POST['login']))
     {
@@ -28,6 +28,7 @@
                 }
                 elseif($Hash==true)
                 {
+                    $_SESSION['StudentID']=$row['ID'];
                     header("location:view.php");
                 }
             }

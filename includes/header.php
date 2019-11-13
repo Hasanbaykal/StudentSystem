@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -18,8 +19,22 @@
             <div class="collapse navbar-collapse" id="Navbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="login.php" class="nav-link">Inloggen</a>
+                        <?php
+
+                            if(isset($_SESSION['StudentID']))
+                            {
+                                echo ' <form action="logout.php" method="POST">
+                                            <button class="btn btn-link" name="logout">Logout</button>
+                                        </form>';
+                            }
+                            else
+                            {
+                                echo ' <a href="login.php" class="nav-link">Inloggen</a> ';
+                            }
+
+                        ?>
                     </li>
                 </ul>
             </div>
+        </div>
     </nav>

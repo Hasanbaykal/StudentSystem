@@ -1,5 +1,8 @@
 
-<?php require_once('includes/header.php'); ?>
+<?php 
+require_once('includes/header.php'); 
+require_once('includes/function.php');
+?>
 
 <div class="container">
         <div class="row">
@@ -13,28 +16,7 @@
                     </div>
 
                     <?php
-
-                        $Message = "";
-                        if(isset($_GET['Empty']))
-                        {
-                            $Message = " Vul De Lege Velden In ";
-                            echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
-                        }
-
-                        $Message = "";
-                        if(isset($_GET['Invalid']))
-                        {
-                            $Message = " Gebruikersnaam Bestaat Niet ";
-                            echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
-                        }
-
-                        $Message = "";
-                        if(isset($_GET['Pinvalid']))
-                        {
-                            $Message = " Wachtwoord Klopt Niet ";
-                            echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
-                        }
-
+                        loginfun()
                     ?>
 
                     <div class="card-body">

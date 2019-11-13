@@ -57,4 +57,29 @@
                         }
     }
 
+    function loginfun()
+    {
+                        $Message = "";
+                        if(isset($_GET['Empty']))
+                        {
+                            $Message = " Vul De Lege Velden In ";
+                            echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
+                        }
+
+                        $Message = "";
+                        if(isset($_GET['Invalid']))
+                        {
+                            $Message = " Gebruikersnaam Bestaat Niet ";
+                            echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
+                        }
+
+                        $Message = "";
+                        if(isset($_GET['Pinvalid']))
+                        {
+                            $Message = " Wachtwoord Klopt Niet ";
+                            echo ' <div class="alert alert-danger text-center">'.$Message.'</div> ';
+                        }
+    }
+
+
 ?>
