@@ -4,7 +4,7 @@
 
     if(isset($_SESSION['StudentID']))
     {
-        $GetID = $_GET['success'];
+        $_SESSION['GET']=$GetID = $_GET['success'];
         $query = " select * from student_data where ID='".$GetID."'";
         $result = mysqli_query($con,$query);
 
@@ -33,6 +33,12 @@
             </div>
         </div>
     </div>
+
+    <?php
+
+        if($_SESSION['GET']==$_SESSION['StudentID'])
+        {
+    ?>
 
     <div class="row">
         <div class="col-lg-3">
@@ -93,4 +99,14 @@
         </div>
 
     </div>
+
+    <?php
+    }
+    else
+    {
+        $Error = " Er Is Iets Misgegaan ";
+        echo ' <div class="alert alert-danger text-center">'.$Error.'</div>';
+    }
+    ?>
+
 </div>
