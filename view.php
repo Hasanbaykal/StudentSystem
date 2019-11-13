@@ -1,6 +1,27 @@
 <?php
     require_once('includes/header.php');
     require_once('includes/connection.php');
+
+    if(isset($_SESSION['StudentID']))
+    {
+        $GetID = $_GET['success'];
+        $query = " select * from student_data where ID='".$GetID."'";
+        $result = mysqli_query($con,$query);
+
+        while($row=mysqli_fetch_assoc($result))
+        {
+            $StudentID = $row['ID'];
+            $Image = $row['image'];
+            $FirstName = $row['FName'];
+            $LastName = $row['LName'];
+            $UserName = $row['UName'];
+            $DOB = $row['DOB'];
+            $Gender = $row['Gender'];
+            $Email = $row['Email'];
+            $Date = $row['Date'];
+        }
+    }
+
     require_once('includes/footer.php');
 ?>
 
@@ -17,10 +38,10 @@
         <div class="col-lg-3">
             <div class="card mt-3">
                 <div class="card-title bg-primary text-white py-2 rounded-top">
-                    <h4 class="text-center">HasanBaykal</h4>
+                    <h4 class="text-center"><?php echo $FirstName." ".$LastName ?></h4>
                 </div>
                 <div class="card-body">
-                    <img src="images/login.png" width="200" height="200">
+                    <img src="images/<?php echo $Image ?>" width="200" height="200" class="rounded-circle">
                 </div>
             </div>
         </div>
@@ -30,42 +51,42 @@
                 <table class="table tables-striped">
                     <tr>
                         <td>Student ID</td>
-                        <td>10100</td>
+                        <td><?php echo $StudentID ?></td>
                     </tr>
 
                     <tr>
                         <td>Voornaam</td>
-                        <td>Hasan</td>
+                        <td><?php echo $FirstName ?></td>
                     </tr>
 
                     <tr>
                         <td>Achternaam</td>
-                        <td>Baykal</td>
+                        <td><?php echo $LastName ?></td>
                     </tr>
 
                     <tr>
                         <td>Gebruikersnaam</td>
-                        <td>HasanBaykal</td>
+                        <td><?php echo $UserName ?></td>
                     </tr>
 
                     <tr>
                         <td>Geboortedatum</td>
-                        <td>05/09/1994</td>
+                        <td><?php echo $DOB ?></td>
                     </tr>
 
                     <tr>
                         <td>Geslacht</td>
-                        <td>Man</td>
+                        <td><?php echo $Gender ?></td>
                     </tr>
 
                     <tr>
                         <td>E-mail Adres</td>
-                        <td>hsn.42@live.nl</td>
+                        <td><?php echo $Email ?></td>
                     </tr>
 
                     <tr>
                         <td>Registratie Datum</td>
-                        <td>11/11/2019</td>
+                        <td><?php echo $Date ?></td>
                     </tr>
                 </table>
             </div>
