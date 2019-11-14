@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('includes/connection.php');   
 if(isset($_POST['login']))
     {
@@ -15,8 +15,8 @@ if(isset($_POST['login']))
             $query = " select * from admin where AdminName = '".$Email."' and AdminPass=MD5('".$Pass."')";
             $result = mysqli_query($con,$query);
             
-            if(mysqli_fetch_assoc($result))
-            {
+            if($row=mysqli_fetch_assoc($result))
+            {   $_SESSION['admin']=$row['AdminName'];
                 header("location:admin-panel.php");
             }
             else

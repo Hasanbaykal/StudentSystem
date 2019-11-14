@@ -21,7 +21,7 @@
                     <li class="nav-item">
                         <?php
 
-                            if(isset($_SESSION['StudentID']))
+                            if(isset($_SESSION['StudentID']) || isset($_SESSION['admin']))
                             {
                                 echo ' <form action="logout.php" method="POST">
                                             <button class="btn btn-link" name="logout">Logout</button>

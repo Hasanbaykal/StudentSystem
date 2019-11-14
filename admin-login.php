@@ -28,6 +28,11 @@ require_once('includes/function.php');
                             $Message = " Vul Alstufblieft De Juiste Gegevens In ";
                             echo '<div class="alert alert-danger text-center">'.$Message.'</div> ';
                         }
+
+                        if(isset($_SESSION['admin']))
+                        {
+                            header("location:admin-panel.php");
+                        }
                     ?>
 
                     <div class="card-body">
