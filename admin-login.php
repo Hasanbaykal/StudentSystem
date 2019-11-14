@@ -16,14 +16,25 @@ require_once('includes/function.php');
                     </div>
 
                     <?php
-                        loginfun()
+                        $Message = "";
+                        if(isset($_GET['empty']))
+                        {
+                            $Message = " Vul De Lege Velden In ";
+                            echo '<div class="alert alert-danger text-center">'.$Message.'</div> ';
+                        }
+
+                        if(isset($_GET['Admin_Invalid']))
+                        {
+                            $Message = " Vul Alstufblieft De Juiste Gegevens In ";
+                            echo '<div class="alert alert-danger text-center">'.$Message.'</div> ';
+                        }
                     ?>
 
                     <div class="card-body">
 
                     <form action="adminphp.php" method="POST">
-                        <input type="text" placeholder="Gebruikersnaam" name="UName" class="form-control mb-2">
-                        <input type="password" placeholder="Wachtwoord" name="Password" class="form-control mb-3">
+                        <input type="text" placeholder="Email" name="email" class="form-control mb-2">
+                        <input type="password" placeholder="Wachtwoord" name="password" class="form-control mb-3">
                         <button class="btn btn-success" name="login">Login</button>
                     </form>
 
