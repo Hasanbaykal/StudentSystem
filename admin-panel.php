@@ -33,11 +33,26 @@
 
                     <div class="card-body">
                     <table class="table table-striped">
-                    <tr>
+
+                        <tr>
+                            <a href="register.php" class="btn btn-primary mb-3">Registreer</a>
+
+                            <form action="search.php" method="POST">
+                                <div class="form-inline float-right">
+                                    <input type="text" placeholder=" Zoek Gebruikers" class="form-control">
+                                    <button class="btn btn-success">Zoek</button>
+                                </div>
+                            </form>
+                        </tr>
+
+
+
+                    <tr class="bg-success text-white">
                         <td> User ID </td>
                         <td> User Image </td>
                         <td> User Name </td>
                         <td> User E-Mail </td>
+                        <td colspan="7"> Handelingen </td>
                     </tr>
 
                     <?php 
@@ -55,6 +70,9 @@
                         <td><img src="images/<?php echo $UserImage ?>" class="rounded-circle" width="50" height="50"></td>
                         <td><?php echo $User ?></td>
                         <td><?php echo $UEmail ?></td>
+                        <td><a href="#" class="btn btn-success btn-sm">View</a></td>
+                        <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
+                        <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
                     </tr>
 
                     <?php
