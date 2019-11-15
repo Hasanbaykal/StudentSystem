@@ -70,7 +70,7 @@
                         <td><img src="images/<?php echo $UserImage ?>" class="rounded-circle" width="50" height="50"></td>
                         <td><?php echo $User ?></td>
                         <td><?php echo $UEmail ?></td>
-                        <td><a href="#" class="btn btn-success btn-sm">View</a></td>
+                        <td><a href="view.php?success=<?php echo $UserID ?>" class="btn btn-success btn-sm">View</a></td>
                         <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
                         <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
                     </tr>

@@ -2,7 +2,7 @@
     require_once('includes/header.php');
     require_once('includes/connection.php');
 
-    if(isset($_SESSION['StudentID']))
+    if(isset($_SESSION['StudentID']) || isset($_SESSION['admin']))
     {
         $_SESSION['GET']=$GetID = $_GET['success'];
         $query = " select * from student_data where ID='".$GetID."'";
@@ -36,7 +36,7 @@
 
     <?php
 
-        if($_SESSION['GET']==$_SESSION['StudentID'])
+        if(isset($_SESSION['admin']) || $_SESSION['GET']==$_SESSION['StudentID'])
         {
     ?>
 
