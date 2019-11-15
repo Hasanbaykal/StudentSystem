@@ -1,6 +1,74 @@
-<?php
-
+<?php 
     require_once('includes/header.php');
-    require_once('includes/footer.php');
+    require_once('includes/connection.php');
+
+    if(isset($_SESSION['admin']))
+    {
+        $query = " select * from student_data";
+        $result = mysqli_query($con,$query);
+    }
+    else
+    {
+        header("location:admin-login.php");
+    }
 
 ?>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-dark text-white mt-5">
+                    <h3 class="text-center py-3"> Admin Panel </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+
+                <div class="card">
+                
+                    <div class="card-title">
+                    </div>
+
+                    <div class="card-body">
+                    <table class="table table-striped">
+                    <tr>
+                        <td> User ID </td>
+                        <td> User Image </td>
+                        <td> User Name </td>
+                        <td> User E-Mail </td>
+                    </tr>
+
+                    <?php 
+                        while($row=mysqli_fetch_assoc($result))
+                        {
+                            $UserID = $row['ID'];
+                            $UserImage = $row['image'];
+                            $User = $row['UName'];
+                            $UEmail = $row['Email'];
+                    ?>
+                        
+
+                    <tr>
+                        <td><?php echo $UserID ?></td>
+                        <td><img src="images/<?php echo $UserImage ?>" class="rounded-circle" width="50" height="50"></td>
+                        <td><?php echo $User ?></td>
+                        <td><?php echo $UEmail ?></td>
+                    </tr>
+
+                    <?php
+                        } 
+                    ?>
+
+                    </table>
+                    </div>
+                
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+<?php require_once('includes/footer.php');?>
