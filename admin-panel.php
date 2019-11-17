@@ -71,7 +71,7 @@
                         <td><?php echo $User ?></td>
                         <td><?php echo $UEmail ?></td>
                         <td><a href="view.php?success=<?php echo $UserID ?>" class="btn btn-success btn-sm">View</a></td>
-                        <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
+                        <td><a href="adminedit.php?edit=<?php echo $UserID ?>" class="btn btn-primary btn-sm">Edit</a></td>
                         <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
                     </tr>
 
