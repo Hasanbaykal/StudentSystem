@@ -39,8 +39,8 @@
 
                             <form action="search.php" method="POST">
                                 <div class="form-inline float-right">
-                                    <input type="text" placeholder=" Zoek Gebruikers" class="form-control">
-                                    <button class="btn btn-success">Zoek</button>
+                                    <input type="text" placeholder=" Zoek Gebruikers" class="form-control" name="search">
+                                    <button class="btn btn-success" name="find">Zoek</button>
                                 </div>
                             </form>
                         </tr>
