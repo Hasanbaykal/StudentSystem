@@ -18,6 +18,7 @@
             $DOB = $row['DOB'];
             $Gender = $row['Gender'];
             $Email = $row['Email'];
+            $Pass = $row['Password'];
 
         }
     }
@@ -36,24 +37,36 @@
                     
                     <div class="card-body">
 
-                    <form action="update.php" method="POST" enctype="multipart/form-data">
+                    <form action="update.php?S_ID=<?php echo $ID ?>" method="POST" enctype="multipart/form-data">
                         <label class="btn btn-primary">
                             Upload Foto Studentenpas<input type="file" style="display:none" name="image">
                         </label>-->
-                        <img src="images/<?php echo $image ?>" width="50" height="50" class="rounderd-circle mb-2">
+                        <img src="images/<?php echo $image ?>" width="50" height="50" class="rounded-circle mb-2">
                         <input type="text" placeholder="Voornaam" name="FName" class="form-control mb-2" value="<?php echo $FName ?>">
                         <input type="text" placeholder="Achternaam" name="LName" class="form-control mb-2" value="<?php echo $LName ?>">
                         <input type="text" placeholder="Gebruikersnaam" name="UName" class="form-control mb-2" value="<?php echo $UName ?>">
                         <input type="text" placeholder="Geboortedatum: DD/MM/JJJJ" name="DOB" class="form-control mb-2" value="<?php echo $DOB ?>">
                         
                         <select title="Gender" name="Gender" class="form-control mb-2">
-                            <option value="null">Selecteer geslacht:</option>
-                            <option value="Man">Man</option>
-                            <option value="Female">Vrouw</option>
+
+                            <?php
+                                if($Gender=="Man")
+                                {
+                                    echo '<option value="Man">Man</option>
+                                          <option value="Female">Vrouw</option>';
+                                }
+                                else
+                                {
+                                    echo '<option value="Female">Vrouw</option>
+                                          <option value="Man">Man</option>';
+                                }
+
+                            ?>
+                            
                         </select>
 
-                        <input type="email" placeholder="E-mail" name="Email" class="form-control mb-2">
-                        <input type="password" placeholder="Wachtwoord" name="Password" class="form-control mb-3">
+                        <input type="email" placeholder="E-mail" name="Email" class="form-control mb-2" value="<?php echo $Email ?>">
+                        <input type="password" placeholder="Wachtwoord" name="Password" class="form-control mb-3" value="<?php echo $Pass ?>">
                         <button class="btn btn-success" name="update">Update Nu</button>
                     </form>
 
