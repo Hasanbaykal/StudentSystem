@@ -2,8 +2,6 @@
 <?php 
 require_once('includes/header.php'); 
 require_once('includes/function.php');
-require_once('config.php');
-$loginURL = $gClient->createAuthUrl();
 ?>
 
 <div class="container">
@@ -27,7 +25,7 @@ $loginURL = $gClient->createAuthUrl();
                         <input type="text" placeholder="Gebruikersnaam" name="UName" class="form-control mb-2">
                         <input type="password" placeholder="Wachtwoord" name="Password" class="form-control mb-3">
                         <button class="btn btn-success" name="login">Login</button>
-                        <input type="button" onclick="window.location = '<?php echo $loginURL ?>';" value="Log In met Google" class="btn btn-danger">
+                        <a href="gmaillogin.php" class="btn btn-danger" >Log In Met Google</a>
                         <a href="register.php" class="card-link float-right" >Registreer</a>
                     </form>
 
